@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="NewSongList.Views.SongView" xmlns:vm="clr-namespace:NewSongList.ViewModels" xmlns:controls="clr-namespace:NewSongList.Controls">
+    <ContentPage.BindingContext>
+        <vm:SongViewModel></vm:SongViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="#2f4259">
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="txtTitle" Text="" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="Title"/>
+                <Button x:Name="btnType" ImageSource="ic_swap" BackgroundColor="#2f4259" HorizontalOptions="EndAndExpand"/>
+                <!--<controls:CustomPicker x:Name="pickerType" Image="ic_arrow_drop_down" HeightRequest="20" WidthRequest="100" HorizontalOptions="End" TitleColor="Black" TextColor="Black" BackgroundColor="White" FontSize="Small">
+                    <controls:CustomPicker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>新歌快報</x:String>
+                            <x:String>週排行</x:String>
+                            <x:String>月排行</x:String>
+                            <x:String>年排行</x:String>
+                        </x:Array>
+                    </controls:CustomPicker.ItemsSource>
+                </controls:CustomPicker>-->
+            </StackLayout>
+            <BoxView BackgroundColor="Gray" HeightRequest="1"/>
+                <ListView x:Name="lv" SeparatorColor="Aqua" RowHeight="75" Margin="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid VerticalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Button ImageSource="ic_play_arrow_black_18dp" WidthRequest="20" HeightRequest="20" BorderWidth="10"/>
+                                        <BoxView BackgroundColor="#2f4259" HeightRequest="1"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="class1" WidthRequest="20" HeightRequest="20"/>
+                                            <Image Source="class2" WidthRequest="20" HeightRequest="20"/>
+                                            <Image Source="empty" WidthRequest="20" HeightRequest="20"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1" Grid.Row="0" Orientation="Vertical" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="ic_song"/>
+                                            <Label Text="{Binding songname}" BackgroundColor="#2f4259" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="End" FontSize="Medium"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image Source="ic_singer"/>
+                                            <Label Text="{Binding singer}" BackgroundColor="#2f4259" TextColor="White" FontAttributes="Bold" VerticalTextAlignment="End" FontSize="Medium"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
